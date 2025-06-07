@@ -170,6 +170,7 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
         tools: (_editor, tools) => {
           console.log(tools);
           return {
+            select: tools.select,
             arrow: tools.arrow,
             draw: tools.draw,
             eraser: tools.eraser,
