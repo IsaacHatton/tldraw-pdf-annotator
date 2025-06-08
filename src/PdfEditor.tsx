@@ -34,9 +34,15 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
   return (
     <Tldraw
       onMount={editor => {
-        if (pdf.pages[0].useLightMode) {
+        var darkCount = 0;
+        var lightCount = 0;
+        pdf.pages.forEach(page => {
+          if (page.useLightMode) lightCount++;
+          else darkCount++;
+        });
+        if (lightCount > darkCount){ 
           editor.user.updateUserPreferences({ colorScheme: 'light' })
-        }else{
+        } else {
           editor.user.updateUserPreferences({ colorScheme: 'dark' })
         }
         editor.createAssets(
