@@ -161,6 +161,10 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
         });
 
         updateCameraBounds(isMobile);
+
+        editor.setCurrentTool('draw')
+
+        editor.updateInstanceState({ isToolLocked: true });
       }}
       components={components}
       overrides={{
