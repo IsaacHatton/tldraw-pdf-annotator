@@ -174,7 +174,6 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
             hand: tools.hand,
             rectangle: tools.rectangle,
             ellipse: tools.ellipse,
-            triangle: tools.triangle,
             laser: tools.laser,
           };
         },
