@@ -10,19 +10,10 @@ import {
   react,
   sortByIndex,
   track,
-  useEditor,
-  DefaultColorThemePalette,
+  useEditor
 } from 'tldraw';
 import { ExportPdfButton } from './ExportPdfButton';
 import { Pdf } from './PdfPicker';
-
-DefaultColorThemePalette.lightMode.black.solid = 'black';
-DefaultColorThemePalette.darkMode.black.solid = 'black';
-DefaultColorThemePalette.lightMode.white.solid = 'white';
-DefaultColorThemePalette.darkMode.white.solid = 'white';
-DefaultColorThemePalette.lightMode.grey.solid = 'white';
-DefaultColorThemePalette.darkMode.grey.solid = 'white';
-
 // TODO:
 // - prevent changing pages (create page, change page, move shapes to new page)
 // - prevent locked shape context menu
@@ -38,10 +29,16 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
     }),
     [pdf],
   );
+  console.log(pdf.pages[0])
 
   return (
     <Tldraw
       onMount={editor => {
+        if (pdf.pages[0].useLightMode) {
+          editor.user.updateUserPreferences({ colorScheme: 'light' })
+        }else{
+          editor.user.updateUserPreferences({ colorScheme: 'dark' })
+        }
         editor.createAssets(
           pdf.pages.map(page => ({
             id: page.assetId,
@@ -171,11 +168,10 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
           console.log(tools);
           return {
             select: tools.select,
-            arrow: tools.arrow,
             draw: tools.draw,
+            line: tools.line,
             eraser: tools.eraser,
             hand: tools.hand,
-            line: tools.line,
             rectangle: tools.rectangle,
             ellipse: tools.ellipse,
             triangle: tools.triangle,

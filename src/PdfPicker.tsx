@@ -11,6 +11,7 @@ export interface PdfPage {
   bounds: Box;
   assetId: TLAssetId;
   shapeId: TLShapeId;
+  useLightMode: boolean;
 }
 
 export interface Pdf {
@@ -53,6 +54,24 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
       };
       await page.render(renderContext).promise;
 
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      let r = 0, g = 0, b = 0;
+
+      for (let j = 0; j < data.length; j += 4) {
+        r += data[j];
+        g += data[j + 1];
+        b += data[j + 2];
+      }
+
+      const pixelCount = data.length / 4;
+      r = Math.round(r / pixelCount);
+      g = Math.round(g / pixelCount);
+      b = Math.round(b / pixelCount);
+
+      const brightness = (0.299 * r + 0.587 * g + 0.114 * b);
+      const lightModeDetected = brightness > 128;
+
       const width = viewport.width / scale;
       const height = viewport.height / scale;
       pages.push({
@@ -60,6 +79,7 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
         bounds: new Box(0, top, width, height),
         assetId: AssetRecordType.createId(),
         shapeId: createShapeId(),
+        useLightMode: lightModeDetected,
       });
       top += height + pageSpacing;
       widest = Math.max(widest, width);
