@@ -127,8 +127,7 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
       <button onClick={onClickOpenPdf}>Open PDF</button>
       <div>Once you are done, reload the page to get back to this menu.</div>
       <p>
-        This tool is a slightly modified version of:
-        https://tldraw.dev/examples/pdf-editor
+        Source code available on <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a>.
       </p>
     </div>
   );
