@@ -5,3 +5,7 @@ body {
   font-family: 'Inter', sans-serif;
   overscroll-behavior: none;
 }
+
+.tlui-minimap {
+  height: 400px;
+}
