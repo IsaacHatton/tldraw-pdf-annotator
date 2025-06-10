@@ -103,16 +103,21 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
     input.type = 'file';
     input.accept = 'application/pdf';
     input.addEventListener('change', async e => {
-      const fileList = (e.target as HTMLInputElement).files;
-      if (!fileList || fileList.length === 0) return;
-      const file = fileList[0];
+      try{
+        const fileList = (e.target as HTMLInputElement).files;
+        if (!fileList || fileList.length === 0) return;
+        const file = fileList[0];
 
-      setIsLoading(true);
-      try {
-        const pdf = await loadPdf(file.name, await file.arrayBuffer());
-        onOpenPdf(pdf);
-      } finally {
-        setIsLoading(false);
+        setIsLoading(true);
+        try {
+          const pdf = await loadPdf(file.name, await file.arrayBuffer());
+          onOpenPdf(pdf);
+        } finally {
+          setIsLoading(false);
+        }
+      }catch (error) {
+        console.error('Failed to load PDF:', error);
+        alert("Here's the error, please send me a screenshot of this: (A)" + error);
       }
     });
     input.click();

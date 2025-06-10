@@ -4,6 +4,9 @@ import { PdfEditor } from './PdfEditor';
 import { Pdf, PdfPicker } from './PdfPicker';
 import './pdf-editor.css';
 
+import Clarity from '@microsoft/clarity';
+Clarity.init("rxebkxz5mx");
+
 type State =
   | {
       phase: 'pick';
