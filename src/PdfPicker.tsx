@@ -130,7 +130,7 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
   return (
     <div className="PdfPicker">
       <button onClick={onClickOpenPdf}>Open PDF</button>
-      <div>Once you are done, reload the page to get back to this menu.</div>
+      <div>MS Clarity is used on this website.</div>
       <p>
         Source code available on <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a>.
       </p>
