@@ -7,6 +7,17 @@ import './pdf-editor.css';
 import Clarity from '@microsoft/clarity';
 Clarity.init("rxebkxz5mx");
 
+if (typeof Promise.withResolvers === 'undefined') {
+  Promise.withResolvers = function () {
+    let resolve, reject
+    const promise = new Promise((res, rej) => {
+      resolve = res
+      reject = rej
+    })
+    return { promise, resolve, reject }
+  }
+}
+
 type State =
   | {
       phase: 'pick';
