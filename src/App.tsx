@@ -5,7 +5,7 @@ import { Pdf, PdfPicker } from './PdfPicker';
 import './pdf-editor.css';
 
 import Clarity from '@microsoft/clarity';
-Clarity.init("rxebkxz5mx");
+Clarity.init('rxebkxz5mx');
 
 if (typeof (Promise as any).withResolvers === 'undefined') {
   (Promise as any).withResolvers = function <T>() {

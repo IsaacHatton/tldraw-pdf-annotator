@@ -10,7 +10,7 @@ import {
   react,
   sortByIndex,
   track,
-  useEditor
+  useEditor,
 } from 'tldraw';
 import { ExportPdfButton } from './ExportPdfButton';
 import { Pdf } from './PdfPicker';
@@ -29,7 +29,7 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
     }),
     [pdf],
   );
-  console.log(pdf.pages[0])
+  console.log(pdf.pages[0]);
 
   return (
     <Tldraw
@@ -40,10 +40,10 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
           if (page.useLightMode) lightCount++;
           else darkCount++;
         });
-        if (lightCount > darkCount){ 
-          editor.user.updateUserPreferences({ colorScheme: 'light' })
+        if (lightCount > darkCount) {
+          editor.user.updateUserPreferences({ colorScheme: 'light' });
         } else {
-          editor.user.updateUserPreferences({ colorScheme: 'dark' })
+          editor.user.updateUserPreferences({ colorScheme: 'dark' });
         }
         editor.createAssets(
           pdf.pages.map(page => ({
@@ -168,7 +168,7 @@ export function PdfEditor({ pdf }: { pdf: Pdf }) {
 
         updateCameraBounds(isMobile);
 
-        editor.setCurrentTool('draw')
+        editor.setCurrentTool('draw');
 
         editor.updateInstanceState({ isToolLocked: true });
       }}

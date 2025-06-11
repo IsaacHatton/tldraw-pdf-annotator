@@ -56,7 +56,9 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
 
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data;
-      let r = 0, g = 0, b = 0;
+      let r = 0,
+        g = 0,
+        b = 0;
 
       for (let j = 0; j < data.length; j += 4) {
         r += data[j];
@@ -69,7 +71,7 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
       g = Math.round(g / pixelCount);
       b = Math.round(b / pixelCount);
 
-      const brightness = (0.299 * r + 0.587 * g + 0.114 * b);
+      const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
       const lightModeDetected = brightness > 128;
 
       const width = viewport.width / scale;
@@ -103,7 +105,7 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
     input.type = 'file';
     input.accept = 'application/pdf';
     input.addEventListener('change', async e => {
-      try{
+      try {
         const fileList = (e.target as HTMLInputElement).files;
         if (!fileList || fileList.length === 0) return;
         const file = fileList[0];
@@ -115,9 +117,11 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
         } finally {
           setIsLoading(false);
         }
-      }catch (error) {
+      } catch (error) {
         console.error('Failed to load PDF:', error);
-        alert("Here's the error, please send me a screenshot of this: (A)" + error);
+        alert(
+          "Here's the error, please send me a screenshot of this: (A)" + error,
+        );
       }
     });
     input.click();
@@ -132,8 +136,13 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
       <button onClick={onClickOpenPdf}>Open PDF</button>
       <div>MS Clarity is used on this website.</div>
       <p>
-        Source code available on <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a>.
-        Code from tldraw's PDF editor example is used, and a polyfill for withResolvers from <a href="https://gist.github.com/lmammino/ef121da874a80d657379a1cd64bf8166">here</a>
+        Source code available on{' '}
+        <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a>
+        . Code from tldraw's PDF editor example is used, and a polyfill for
+        withResolvers from{' '}
+        <a href="https://gist.github.com/lmammino/ef121da874a80d657379a1cd64bf8166">
+          here
+        </a>
       </p>
     </div>
   );
