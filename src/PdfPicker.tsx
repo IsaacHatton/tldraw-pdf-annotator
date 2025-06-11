@@ -133,6 +133,7 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
       <div>MS Clarity is used on this website.</div>
       <p>
         Source code available on <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a>.
+        Code from tldraw's PDF editor example is used, and a polyfill for withResolvers from <a href="https://gist.github.com/lmammino/ef121da874a80d657379a1cd64bf8166">here</a>
       </p>
     </div>
   );
