@@ -11,9 +11,16 @@ import {
   sortByIndex,
   track,
   useEditor,
+  STROKE_SIZES,
 } from 'tldraw';
 import { ExportPdfButton } from './ExportPdfButton';
 import { Pdf } from './PdfPicker';
+
+STROKE_SIZES.s = 0.1;
+STROKE_SIZES.m = 0.3;
+STROKE_SIZES.l = 0.9;
+STROKE_SIZES.xl = 1.5;
+
 // TODO:
 // - prevent changing pages (create page, change page, move shapes to new page)
 // - prevent locked shape context menu

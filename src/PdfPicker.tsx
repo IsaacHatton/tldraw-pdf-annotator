@@ -136,7 +136,8 @@ export function PdfPicker({ onOpenPdf }: { onOpenPdf(pdf: Pdf): void }) {
       <button onClick={onClickOpenPdf}>Open PDF</button>
       <p>
         Source code available on{' '}
-        <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a> alongside third party code acknowledgements.
+        <a href="https://github.com/IsaacHatton/tldraw-pdf-annotator">GitHub</a>{' '}
+        alongside third party code acknowledgements.
       </p>
     </div>
   );
